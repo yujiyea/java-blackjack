@@ -21,13 +21,24 @@ class UserTest {
     }
 
     @Test
-    @DisplayName("플레이어의 현재 카드의 합이 21초과인지 여부를 판단한다.")
-    void user_card_sum_is_up_to_21() {
+    @DisplayName("플레이어의 현재 카드의 합이 21이하인지 여부를 판단한다.")
+    void user_card_sum_is_down_to_21() {
         User player = new User(java.util.List.of (
             new Card("1", CardPattern.CLOVER),
             new Card("2", CardPattern.HEART)
         ));
         Boolean receivable = player.receivable(21);
+        assertThat(receivable).isTrue();
+    }
+
+    @Test
+    @DisplayName("딜러의 현재 카드의 합이 16이하인지 여부를 판단한다.")
+    void user_card_sum_is_down_to_16() {
+        User dealer = new User(java.util.List.of (
+                new Card("10", CardPattern.CLOVER),
+                new Card("A", CardPattern.HEART)
+        ));
+        Boolean receivable = dealer.receivable(16);
         assertThat(receivable).isTrue();
     }
 
