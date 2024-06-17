@@ -7,7 +7,7 @@ import java.util.List;
 public class Deck {
 
     private static final int CARD_COUNT = 52;
-    private List<Card> cards;
+    private List<Card> cardList;
     private int cardCnt;
 
     public Deck() {
@@ -17,20 +17,20 @@ public class Deck {
     }
 
     private void initializeDeck() {
-        cards = new ArrayList<>();
+        cardList = new ArrayList<>();
         for (CardPattern pattern : CardPattern.values()) {
             for (String number : CardNumber.getCardNumbers()) {
-                cards.add(new Card(number, pattern));
+                cardList.add(new Card(number, pattern));
             }
         }
 }
 
     private void shuffle() {
-        Collections.shuffle(cards);
+        Collections.shuffle(cardList);
     }
 
-    public List<Card> getCards() {
-        return cards;
+    public List<Card> getCardList() {
+        return cardList;
     }
 
     public int getCardCnt() {
@@ -44,6 +44,6 @@ public class Deck {
 
     public Card removeCard() {
         cardCnt--;
-        return cards.remove(0);
+        return cardList.remove(0);
     }
 }

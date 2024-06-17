@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class DeckTest {
 
@@ -12,7 +11,7 @@ class DeckTest {
     @DisplayName("덱은 카드 52장을 갖는다.")
     void deck_has_52_cards() {
         Deck deck = new Deck();
-        assertThat(deck.getCards()).hasSize(52);
+        assertThat(deck.getCardList()).hasSize(52);
     }
 
     @Test
