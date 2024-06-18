@@ -19,7 +19,7 @@ public class Deck {
     private void initializeDeck() {
         cardList = new ArrayList<>();
         for (CardPattern pattern : CardPattern.values()) {
-            for (String number : CardNumber.getCardNumbers()) {
+            for (CardNumber number : CardNumber.values()) {
                 cardList.add(new Card(number, pattern));
             }
         }

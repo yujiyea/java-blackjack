@@ -27,8 +27,8 @@ class UserTest {
     @DisplayName("딜러는 항상 자신의 첫번째 카드를 보여준다.")
     void dealer_show_cardList(){
         Dealer dealer = new Dealer(List.of (
-                new Card("5", CardPattern.CLOVER),
-                new Card("2", CardPattern.HEART)
+                new Card(CardNumber.FIVE, CardPattern.CLOVER),
+                new Card(CardNumber.FOUR, CardPattern.HEART)
         ));
         List<Card> cardList = dealer.showCardList(name -> name.equals("딜러"));
         assertThat(cardList).hasSize(1);
@@ -38,8 +38,8 @@ class UserTest {
     @DisplayName("플레이어는 항상 자신의 모든 카드를 보여준다.")
     void player_show_cardList(){
         Player player = new Player(java.util.List.of (
-                new Card("3", CardPattern.CLOVER),
-                new Card("2", CardPattern.HEART)
+                new Card(CardNumber.JACK, CardPattern.CLOVER),
+                new Card(CardNumber.FIVE, CardPattern.HEART)
         ), "jackson");
         List<Card> cardList = player.showCardList(name -> name.equals("딜러"));
         assertThat(cardList).hasSize(2);
@@ -49,8 +49,8 @@ class UserTest {
     @DisplayName("플레이어의 현재 카드의 합이 21이하인지 여부를 판단한다.")
     void user_card_sum_is_down_to_21() {
         Player player = new Player(java.util.List.of (
-            new Card("6", CardPattern.CLOVER),
-            new Card("2", CardPattern.HEART)
+            new Card(CardNumber.FIVE, CardPattern.CLOVER),
+            new Card(CardNumber.FOUR, CardPattern.HEART)
         ), "jackson");
         Boolean receivable = player.receivable(21);
         assertThat(receivable).isTrue();
@@ -60,8 +60,8 @@ class UserTest {
     @DisplayName("딜러의 현재 카드의 합이 16이하인지 여부를 판단한다.")
     void user_card_sum_is_down_to_16() {
         Dealer dealer = new Dealer(java.util.List.of (
-                new Card("10", CardPattern.CLOVER),
-                new Card("A", CardPattern.HEART)
+                new Card(CardNumber.TEN, CardPattern.CLOVER),
+                new Card(CardNumber.ACE, CardPattern.HEART)
         ));
         Boolean receivable = dealer.receivable(16);
         assertThat(receivable).isTrue();
@@ -80,14 +80,14 @@ class UserTest {
     static Stream<Arguments> generateData(){
         return Stream.of(
                 Arguments.of(new Player(List.of (
-                        new Card("10", CardPattern.CLOVER),
-                        new Card("5", CardPattern.HEART),
-                        new Card("A", CardPattern.CLOVER)
+                        new Card(CardNumber.TEN, CardPattern.CLOVER),
+                        new Card(CardNumber.FIVE, CardPattern.HEART),
+                        new Card(CardNumber.ACE, CardPattern.CLOVER)
                 ), "jackson"), 16),
                 Arguments.of(new Player(List.of (
-                        new Card("10", CardPattern.CLOVER),
-                        new Card("J", CardPattern.HEART),
-                        new Card("Q", CardPattern.CLOVER)
+                        new Card(CardNumber.TEN, CardPattern.CLOVER),
+                        new Card(CardNumber.JACK, CardPattern.HEART),
+                        new Card(CardNumber.QUEEN, CardPattern.CLOVER)
                 ), "suzy"), 30)
         );
     }

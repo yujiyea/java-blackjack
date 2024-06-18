@@ -47,14 +47,14 @@ public abstract class User {
     private static List<Integer> plusCardNumberOption(List<Integer> sum, Card card) {
         List<Integer> newSums = new ArrayList<>();
         for (Integer s : sum) {
-            if (card.getNumber().equals(CardNumber.from("A"))) {
+            if (card.getNumber().equals(CardNumber.ACE.getName())) {
                 newSums.add(s + 1);
                 newSums.add(s + 11);
                 continue;
             }
-            if (card.getNumber().equals(CardNumber.from("J")) ||
-                    card.getNumber().equals(CardNumber.from("Q")) ||
-                    card.getNumber().equals(CardNumber.from("K"))) {
+            if (card.getNumber().equals(CardNumber.JACK.getName()) ||
+                    card.getNumber().equals(CardNumber.QUEEN.getName()) ||
+                    card.getNumber().equals(CardNumber.KING.getName())) {
                 newSums.add(s + 10);
                 continue;
             }

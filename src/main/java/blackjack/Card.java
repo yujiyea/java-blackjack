@@ -1,16 +1,16 @@
 package blackjack;
 
 public class Card {
-    private final String number;
+    private final CardNumber number;
     private final CardPattern pattern;
 
-    public Card(String number, CardPattern pattern) {
-        this.number = CardNumber.from(number);
+    public Card(CardNumber number, CardPattern pattern) {
+        this.number = number;
         this.pattern = pattern;
     }
 
     public String getNumber() {
-        return number;
+        return number.getName();
     }
 
     public CardPattern getPattern() {
