@@ -42,4 +42,20 @@ class WinningTest {
         assertThat(dealer.getWinCount()).isEqualTo(0);
         assertThat(player.getWinStatus()).isTrue();
     }
+
+    @Test
+    @DisplayName("플레이어와 딜러의 카드 합이 동일하면 플레이어가 승리한다.")
+    void equals_card_sum_player_win() {
+        Dealer dealer = new Dealer(List.of (
+                new Card("3", CardPattern.HEART),
+                new Card("2", CardPattern.HEART)
+        ));
+        Player player = new Player(java.util.List.of (
+                new Card("3", CardPattern.CLOVER),
+                new Card("2", CardPattern.HEART)
+        ), "jackson");
+        Winning.checkWinner(dealer, player);
+        assertThat(dealer.getWinCount()).isEqualTo(0);
+        assertThat(player.getWinStatus()).isTrue();
+    }
 }
