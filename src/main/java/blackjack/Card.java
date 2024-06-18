@@ -5,7 +5,7 @@ public class Card {
     private final CardPattern pattern;
 
     public Card(String number, CardPattern pattern) {
-        this.number = number;
+        this.number = CardNumber.from(number);
         this.pattern = pattern;
     }
 

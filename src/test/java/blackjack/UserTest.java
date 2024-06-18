@@ -27,7 +27,7 @@ class UserTest {
     @DisplayName("딜러는 항상 자신의 첫번째 카드를 보여준다.")
     void dealer_show_cardList(){
         Dealer dealer = new Dealer(List.of (
-                new Card("1", CardPattern.CLOVER),
+                new Card("5", CardPattern.CLOVER),
                 new Card("2", CardPattern.HEART)
         ));
         List<Card> cardList = dealer.showCardList(name -> name.equals("딜러"));
@@ -38,7 +38,7 @@ class UserTest {
     @DisplayName("플레이어는 항상 자신의 모든 카드를 보여준다.")
     void player_show_cardList(){
         Player player = new Player(java.util.List.of (
-                new Card("1", CardPattern.CLOVER),
+                new Card("3", CardPattern.CLOVER),
                 new Card("2", CardPattern.HEART)
         ), "jackson");
         List<Card> cardList = player.showCardList(name -> name.equals("딜러"));
@@ -49,7 +49,7 @@ class UserTest {
     @DisplayName("플레이어의 현재 카드의 합이 21이하인지 여부를 판단한다.")
     void user_card_sum_is_down_to_21() {
         Player player = new Player(java.util.List.of (
-            new Card("1", CardPattern.CLOVER),
+            new Card("6", CardPattern.CLOVER),
             new Card("2", CardPattern.HEART)
         ), "jackson");
         Boolean receivable = player.receivable(21);

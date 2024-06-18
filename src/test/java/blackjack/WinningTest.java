@@ -14,11 +14,11 @@ class WinningTest {
     @DisplayName("딜러의 카드 합이 21이하이고 플레이어보다 크면 딜러가 승리한다.")
     void dealer_win() {
         Dealer dealer = new Dealer(List.of (
-                new Card("1", CardPattern.CLOVER),
+                new Card("3", CardPattern.CLOVER),
                 new Card("5", CardPattern.HEART)
         ));
         Player player = new Player(java.util.List.of (
-                new Card("1", CardPattern.CLOVER),
+                new Card("4", CardPattern.CLOVER),
                 new Card("2", CardPattern.HEART)
         ), "jackson");
         Winning.checkWinner(dealer, player);
@@ -35,7 +35,7 @@ class WinningTest {
                 new Card("10", CardPattern.HEART)
         ));
         Player player = new Player(java.util.List.of (
-                new Card("1", CardPattern.CLOVER),
+                new Card("3", CardPattern.CLOVER),
                 new Card("2", CardPattern.HEART)
         ), "jackson");
         Winning.checkWinner(dealer, player);
