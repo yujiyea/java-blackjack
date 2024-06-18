@@ -64,5 +64,5 @@ public abstract class User {
     }
 
 
-    public  abstract  List<Card> showCardList(Predicate<String> conditional);
+    public abstract List<Card> showCardList(Predicate<String> conditional);
 }
