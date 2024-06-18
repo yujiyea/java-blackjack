@@ -4,16 +4,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public class User {
-
-    private List<Card> cardList = new ArrayList<>();
+    protected List<Card> cardList = new ArrayList<>();
 
     public User() {
-    }
-
-    public User(List<Card> cardList) {
-        this.cardList = cardList;
     }
 
     public void receiveCard(Deck deck) {
@@ -71,4 +67,7 @@ public class User {
     }
 
 
+    public List<Card> showCardList(Predicate<String> conditional) {
+        return null;
+    }
 }

@@ -16,7 +16,7 @@ class UserTest {
     @Test
     @DisplayName("플레이어와 딜러는 게임 시작 시 두 장의 카드를 받는다.")
     void user_draws_card() {
-        User player = new User();
+        Player player = new Player("jackson");
         Deck deck = new Deck();
         player.receiveCard(deck);
         player.receiveCard(deck);
@@ -24,12 +24,34 @@ class UserTest {
     }
 
     @Test
+    @DisplayName("딜러는 항상 자신의 첫번째 카드를 보여준다.")
+    void dealer_show_cardList(){
+        Dealer dealer = new Dealer(List.of (
+                new Card("1", CardPattern.CLOVER),
+                new Card("2", CardPattern.HEART)
+        ));
+        List<Card> cardList = dealer.showCardList(name -> name.equals("딜러"));
+        assertThat(cardList).hasSize(1);
+    }
+
+    @Test
+    @DisplayName("플레이어는 항상 자신의 모든 카드를 보여준다.")
+    void player_show_cardList(){
+        Player player = new Player(java.util.List.of (
+                new Card("1", CardPattern.CLOVER),
+                new Card("2", CardPattern.HEART)
+        ), "jackson");
+        List<Card> cardList = player.showCardList(name -> name.equals("딜러"));
+        assertThat(cardList).hasSize(2);
+    }
+
+    @Test
     @DisplayName("플레이어의 현재 카드의 합이 21이하인지 여부를 판단한다.")
     void user_card_sum_is_down_to_21() {
-        User player = new User(java.util.List.of (
+        Player player = new Player(java.util.List.of (
             new Card("1", CardPattern.CLOVER),
             new Card("2", CardPattern.HEART)
-        ));
+        ), "jackson");
         Boolean receivable = player.receivable(21);
         assertThat(receivable).isTrue();
     }
@@ -37,7 +59,7 @@ class UserTest {
     @Test
     @DisplayName("딜러의 현재 카드의 합이 16이하인지 여부를 판단한다.")
     void user_card_sum_is_down_to_16() {
-        User dealer = new User(java.util.List.of (
+        Dealer dealer = new Dealer(java.util.List.of (
                 new Card("10", CardPattern.CLOVER),
                 new Card("A", CardPattern.HEART)
         ));
@@ -57,16 +79,16 @@ class UserTest {
 
     static Stream<Arguments> generateData(){
         return Stream.of(
-                Arguments.of(new User(List.of (
+                Arguments.of(new Player(List.of (
                         new Card("10", CardPattern.CLOVER),
                         new Card("5", CardPattern.HEART),
                         new Card("A", CardPattern.CLOVER)
-                )), 16),
-                Arguments.of(new User(List.of (
+                ), "jackson"), 16),
+                Arguments.of(new Player(List.of (
                         new Card("10", CardPattern.CLOVER),
                         new Card("J", CardPattern.HEART),
                         new Card("Q", CardPattern.CLOVER)
-                )), 30)
+                ), "suzy"), 30)
         );
     }
 }
