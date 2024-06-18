@@ -6,11 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public class User {
+public abstract class User {
     protected List<Card> cardList = new ArrayList<>();
-
-    public User() {
-    }
 
     public void receiveCard(Deck deck) {
         Card card = deck.drawCard();
@@ -67,7 +64,5 @@ public class User {
     }
 
 
-    public List<Card> showCardList(Predicate<String> conditional) {
-        return null;
-    }
+    public  abstract  List<Card> showCardList(Predicate<String> conditional);
 }
