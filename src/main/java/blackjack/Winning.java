@@ -7,8 +7,7 @@ public class Winning {
         int dealerResult = dealer.getBestResult();
         int playerResult = player.getBestResult();
 
-        Predicate<Integer> isDealerBusted = result -> result > 21;
-        Predicate<Integer> isDealerWin = result -> !isDealerBusted.test(result) && (result > playerResult);
+        Predicate<Integer> isDealerWin = result -> result <= 21 && (playerResult > 21 || result > playerResult);
 
         if (isDealerWin.test(dealerResult)) {
             dealer.win();

@@ -58,4 +58,21 @@ class WinningTest {
         assertThat(dealer.getWinCount()).isEqualTo(0);
         assertThat(player.getWinStatus()).isTrue();
     }
+
+    @Test
+    @DisplayName("플레이어의 카드 합이 21을 초과하고 딜러의 카드합이 21이하이면 딜러가 승리한다.")
+    void player_burst_and_dealer_win() {
+        Dealer dealer = new Dealer(List.of (
+                new Card("3", CardPattern.HEART),
+                new Card("2", CardPattern.HEART)
+        ));
+        Player player = new Player(java.util.List.of (
+                new Card("10", CardPattern.CLOVER),
+                new Card("Q", CardPattern.HEART),
+                new Card("2", CardPattern.HEART)
+        ), "jackson");
+        Winning.checkWinner(dealer, player);
+        assertThat(dealer.getWinCount()).isEqualTo(1);
+        assertThat(player.getWinStatus()).isFalse();
+    }
 }
