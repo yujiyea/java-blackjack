@@ -6,6 +6,7 @@ public enum CardPattern {
     CLOVER("클로버"),
     SPADE("스페이드");
 
+
     private final String pattern;
 
     CardPattern(String pattern) {

@@ -7,26 +7,23 @@ import java.util.List;
 public class Deck {
 
     private static final int CARD_COUNT = 52;
-    private List<Card> cardList;
+    private List<Card> cardList = new ArrayList<>();
     private int cardCnt;
 
     public Deck() {
-        initializeDeck();
-        shuffle();
         this.cardCnt = CARD_COUNT;
     }
 
-    private void initializeDeck() {
-        cardList = new ArrayList<>();
+    public Deck(List<Card> cardList) {
+        this.cardList = cardList;
+    }
+
+    static {
         for (CardPattern pattern : CardPattern.values()) {
             for (CardNumber number : CardNumber.values()) {
-                cardList.add(new Card(number, pattern));
+//                cardList.add(new Card(number, pattern));
             }
         }
-}
-
-    private void shuffle() {
-        Collections.shuffle(cardList);
     }
 
     public List<Card> getCardList() {
@@ -38,11 +35,11 @@ public class Deck {
     }
 
     public Card drawCard() {
-        shuffle();
+//        RandomShuffle.shuffle(cardList);
         return removeCard();
     }
 
-    public Card removeCard() {
+    private Card removeCard() {
         cardCnt--;
         return cardList.remove(0);
     }
